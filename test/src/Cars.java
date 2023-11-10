@@ -3,13 +3,14 @@ import java.util.ArrayList;
 
 public abstract class Cars implements Movable {
 
-    public int nrDoors;
-    public double enginePower;
-    public double currentSpeed;
-    public Color color;
-    public int dir = 0;
-    public String modelName;
-    public double xpos = 0, ypos = 0;
+    protected int nrDoors;
+    protected double enginePower;
+    protected double currentSpeed;
+    protected Color color;
+
+    protected int dir = 0;
+    protected String modelName;
+    protected double xpos = 0, ypos = 0;
 
     public int getNrDoors() {
         return nrDoors;
@@ -44,7 +45,7 @@ public abstract class Cars implements Movable {
         return dir;
     }
 
-    protected abstract double speedFactor();
+    abstract double speedFactor();
 
 
     public void incrementSpeed(double amount) {
