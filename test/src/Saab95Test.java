@@ -23,7 +23,7 @@ public class Saab95Test{
     }
     @Test
     public void testGetCurrentSpeed() {
-        assert saab.currentSpeed == 0;
+        assert saab.getCurrentSpeed() == 0;
     }
     @Test
     public void testGetColor() {
@@ -71,7 +71,7 @@ public class Saab95Test{
     public void testIncrementSpeed() {
         double speed = saab.getCurrentSpeed();
         saab.incrementSpeed(10.0);
-        assert saab.getCurrentSpeed() == Math.min(speed + saab.speedFactor() * 10, saab.enginePower);
+        assert saab.getCurrentSpeed() == Math.min(speed + saab.speedFactor() * 10, saab.getEnginePower());
 
     }
     @Test
@@ -104,24 +104,24 @@ public class Saab95Test{
     @Test
     public void testTurnLeft() {
         saab.turnRight();
-        assert saab.dir == 1;
+        assert saab.getDir() == 1;
         saab.turnRight();
-        assert saab.dir == 2;
+        assert saab.getDir() == 2;
         saab.turnRight();
-        assert saab.dir == 3;
+        assert saab.getDir() == 3;
         saab.turnRight();
-        assert saab.dir == 0;
+        assert saab.getDir() == 0;
     }
     @Test
     public void testTurnRight() {
         saab.turnLeft();
-        assert saab.dir == 3;
+        assert saab.getDir() == 3;
         saab.turnLeft();
-        assert saab.dir == 2;
+        assert saab.getDir() == 2;
         saab.turnLeft();
-        assert saab.dir == 1;
+        assert saab.getDir() == 1;
         saab.turnLeft();
-        assert saab.dir ==0;
+        assert saab.getDir() ==0;
     }
 
 

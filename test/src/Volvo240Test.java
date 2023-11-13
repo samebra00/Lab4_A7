@@ -6,6 +6,7 @@ import java.awt.*;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class Volvo240Test {
 
@@ -55,7 +56,7 @@ public class Volvo240Test {
     public void testIncrementSpeed() {
         double speed = volvo.getCurrentSpeed();
         volvo.incrementSpeed(10.0);
-        assert volvo.getCurrentSpeed() == Math.min(speed + volvo.speedFactor() * 10, volvo.enginePower);
+        assert volvo.getCurrentSpeed() == Math.min(speed + volvo.speedFactor() * 10, volvo.getEnginePower());
     }
     @Test
     public void testDecrementSpeed() {
@@ -75,13 +76,18 @@ public class Volvo240Test {
         double speed = volvo.getCurrentSpeed();
         volvo.gas(200);
         assertEquals(volvo.getCurrentSpeed(), speed, 0);
+        volvo.gas(0.5);
+        assertNotEquals(speed, volvo.getCurrentSpeed(), 0);
 
     }
     @Test
     public void testBrake() {
+        volvo.gas(1);
         double speed = volvo.getCurrentSpeed();
         volvo.brake(100);
         assertEquals(volvo.getCurrentSpeed(), speed, 0);
+        volvo.brake(0.5);
+        assertNotEquals(speed, volvo.getCurrentSpeed(), 0);
     }
     @Test
     public void testMove() {
@@ -103,25 +109,25 @@ public class Volvo240Test {
     @Test
     public void testTurnRight() {
         volvo.turnRight();
-        assert volvo.dir == 1;
+        assert volvo.getDir() == 1;
         volvo.turnRight();
-        assert volvo.dir == 2;
+        assert volvo.getDir() == 2;
         volvo.turnRight();
-        assert volvo.dir == 3;
+        assert volvo.getDir() == 3;
         volvo.turnRight();
-        assert volvo.dir == 0;
+        assert volvo.getDir() == 0;
 
     }
     @Test
     public void testTurnLeft() {
         volvo.turnLeft();
-        assert volvo.dir == 3;
+        assert volvo.getDir() == 3;
         volvo.turnLeft();
-        assert volvo.dir == 2;
+        assert volvo.getDir() == 2;
         volvo.turnLeft();
-        assert volvo.dir == 1;
+        assert volvo.getDir() == 1;
         volvo.turnLeft();
-        assert volvo.dir ==0;
+        assert volvo.getDir() ==0;
 
     }
 }

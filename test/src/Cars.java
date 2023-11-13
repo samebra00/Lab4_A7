@@ -1,15 +1,32 @@
 import java.awt.*;
-import java.util.ArrayList;
+
 
 public abstract class Cars implements Movable {
 
-    public int nrDoors;
-    public double enginePower;
-    public double currentSpeed;
-    public Color color;
-    public int dir = 0;
-    public String modelName;
-    public double xpos = 0, ypos = 0;
+    private int nrDoors;
+    private double enginePower;
+    private double currentSpeed;
+    private Color color;
+    private int dir = 0;
+    private String modelName;
+    private double xpos = 0, ypos = 0;
+
+
+
+
+
+    public  Cars(int nrDoors, double enginePower, Color color, String modelName){
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+        this.xpos = 0;
+        this.ypos = 0;
+        this.dir = 0;
+        this.currentSpeed =  0;
+
+
+    }
 
     public int getNrDoors() {
         return nrDoors;
