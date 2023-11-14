@@ -11,11 +11,13 @@ public abstract class Cars implements Movable {
     private String modelName;
     private double xpos = 0, ypos = 0;
 
+    private double carWeight;
 
 
 
 
-    public  Cars(int nrDoors, double enginePower, Color color, String modelName){
+
+    public  Cars(int nrDoors, double enginePower,double carWeight, Color color, String modelName){
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -41,6 +43,12 @@ public abstract class Cars implements Movable {
         return currentSpeed;
     }
 
+    public void setCurrentSpeed(double speed){
+        if(0 <= speed && speed <=0.1){
+            currentSpeed = speed;
+        }
+    }
+
     public Color getColor() {
         return color;
     }
@@ -59,6 +67,9 @@ public abstract class Cars implements Movable {
     }
     public int getDir() {
         return dir;
+    }
+    public double getCarWeight(){
+        return carWeight;
     }
 
     protected abstract double speedFactor();
