@@ -1,10 +1,14 @@
 import java.awt.*;
 
-public class Saab95 extends Cars {
+public class Saab95 extends PersCar {
 
     private boolean turboOn;
     public Saab95() {
-        super(2, 125,1470,Color.red, "Saab95");
+        setNrDoors(2);
+        setEnginePower(125);
+        setCarWeight(1479);
+        setColor(Color.red);
+        setModelName("Saab95");
         stopEngine();
     }
 

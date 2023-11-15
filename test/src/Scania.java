@@ -1,13 +1,17 @@
 import java.awt.*;
 
-public class Scania extends Cars {
+public class Scania extends TRUCK {
 
     private double TrailerAngle;
 
     private double WeightFactor;
 
     public Scania(){
-        super(2, 1000, Color.blue,"Scania");
+        setNrDoors(2);
+        setEnginePower(1000);
+        setCarWeight(3000);
+        setColor(Color.blue);
+        setModelName("Scania");
         this.TrailerAngle = 0;
         this.WeightFactor = 0.3;
     }

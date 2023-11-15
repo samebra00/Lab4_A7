@@ -17,7 +17,7 @@ public abstract class Cars implements Movable {
 
 
 
-    public  Cars(int nrDoors, double enginePower,double carWeight, Color color, String modelName){
+    /*public  Cars(int nrDoors, double enginePower,double carWeight, Color color, String modelName){
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -25,17 +25,28 @@ public abstract class Cars implements Movable {
         this.xpos = 0;
         this.ypos = 0;
         this.dir = 0;
-        this.currentSpeed =  0;
+        this.currentSpeed =  0;*/
 
 
+
+
+    public void setModelName(String name){
+        this.modelName = name;
     }
-
     public int getNrDoors() {
         return nrDoors;
     }
 
+    public void setNrDoors(int doors){
+        this.nrDoors = doors;
+    }
+
     public double getEnginePower() {
         return enginePower;
+    }
+
+    public void setEnginePower(double power){
+        this.enginePower = power;
     }
 
 
@@ -52,6 +63,7 @@ public abstract class Cars implements Movable {
     public Color getColor() {
         return color;
     }
+
 
     public void setColor(Color clr) {
         color = clr;
@@ -71,7 +83,9 @@ public abstract class Cars implements Movable {
     public double getCarWeight(){
         return carWeight;
     }
-
+    public void setCarWeight(double weight){
+        this.carWeight = weight;
+    }
     protected abstract double speedFactor();
 
 
@@ -85,7 +99,13 @@ public abstract class Cars implements Movable {
     }
     public double getXPos(){return xpos;}
 
+    public void setXpos(double pos){
+        this.xpos = pos;
+    }
+
     public double getYPos(){return ypos;}
+
+    public void setYpos(double pos){ this.ypos = pos;}
 
     public void move() {
         switch (getDir()) {

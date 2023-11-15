@@ -1,60 +1,52 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class CarTransport extends Cars{
-
-    private boolean RampState;
-    private double WeightFactor = 0.2;
+public class CarTransport extends TRUCK{
 
     private int LoadMAX;
 
-    private ArrayList<Cars> LoadCap;
+    private ArrayList<PersCar> curLoad;
 
+    private int loadingfield = 5;
 
+            
 
-    public CarTransport(int nrDoors, double enginePower,double carWeight, Color color, String modelName,int LoadMAX){
-        super(nrDoors, enginePower,carWeight,color,modelName);
+    public CarTransport(int LoadMAX) {
+        setNrDoors(2);
+        setEnginePower(570);
+        setCarWeight(4000);
+        setColor(Color.green);
+        setModelName("CarTransport");
         this.LoadMAX = LoadMAX;
-        this.LoadCap = new ArrayList(this.LoadMAX);
-        
-
-
-
+        this.curLoad = new ArrayList();
 
 
     }
+   private void Load(PersCar car) {
+         if (getRampState() == 0 && Math.abs(car.getXPos()) - Math.abs(this.getXPos()) < loadingfield
+          && Math.abs(this.getYPos()) - Math.abs(car.getYPos()) < loadingfield){
+             if (curLoad.size() < LoadMAX){
+                   curLoad.add(car);
+             }
 
-    @Override
-    protected double speedFactor() {
-        return getEnginePower() * 0.1 * WeightFactor;
-    }
-
-    public void RampUp() {
-        if (!RampState) {
-            RampState = true;
-        }
-    }
-
-    public void RampDown(){
-            if (RampState && getCurrentSpeed() == 0){
-                RampState = false;
-            }
-        }
-
-
-
-
-
-
-
-   private void ValidLoad(Cars car) {
-
-       this.car = Car;
-       if (car.getCarWeight() < 2000 && RampDown() == True) {
-
-       }
+         }
    }
-   private UnloadOrder(){
+
+     public void TruckMove(){
+        move();
+        for(PersCar i : curLoad){
+            i.setXpos(this.getXPos());
+            i.setYpos(this.getYPos());
+        }
+     }
+   public void UnloadOrder(){
+        if(getRampState() == 0 && this.getCurrentSpeed() == 0){
+            int idx = curLoad.size() - 1;
+            PersCar car = curLoad.get(idx);
+            curLoad.remove(idx);
+            car.setXpos(this.getXPos() - 1);
+            car.setYpos(this.getYPos() - 1);
+        }
 
    }
 }
