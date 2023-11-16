@@ -21,10 +21,11 @@ public class WorkShop<T> {
 
     }
 
-    public T outTake(T car) {
+    public Cars outTake(Cars car) {
          double loadposx = 0;
         Stallet.remove(car);
-        car.setXPos()
+        car.setXpos(loadposx);
+        loadposx += 1;
         return car;
         }
 
