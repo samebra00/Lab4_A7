@@ -22,15 +22,20 @@ public class CarTransport extends TRUCK{
 
 
     }
-   private void Load(PersCar car) {
+   public void Load(PersCar car) {
          if (getRampState() == 0 && Math.abs(car.getXPos()) - Math.abs(this.getXPos()) < loadingfield
-          && Math.abs(this.getYPos()) - Math.abs(car.getYPos()) < loadingfield){
+          && Math.abs(this.getYPos()) - Math.abs(car.getYPos()) < loadingfield && !curLoad.contains((car))) {
              if (curLoad.size() < LoadMAX){
                    curLoad.add(car);
-             }
 
          }
-   }
+   }}
+
+
+    public ArrayList getLoad(){
+        return curLoad;}
+
+
 
      public void TruckMove(){
         move();
@@ -42,14 +47,14 @@ public class CarTransport extends TRUCK{
    public void UnloadOrder(){
         if(getRampState() == 0 && this.getCurrentSpeed() == 0){
             int idx = curLoad.size() - 1;
-            PersCar car = curLoad.get(idx);
+            PersCar unloadcar = curLoad.get(idx);
             curLoad.remove(idx);
-            car.setXpos(this.getXPos() - 1);
-            car.setYpos(this.getYPos() - 1);
+            unloadcar.setXpos(this.getXPos() - 1);
+            unloadcar.setYpos(this.getYPos() - 1);
         }
 
    }
-}
+}}
 
 
 
