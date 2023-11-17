@@ -17,7 +17,7 @@ public abstract class Cars implements Movable {
 
 
 
-    /*public  Cars(int nrDoors, double enginePower,double carWeight, Color color, String modelName){
+    public  Cars(int nrDoors, double enginePower,double carWeight, Color color, String modelName) {
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
@@ -25,7 +25,8 @@ public abstract class Cars implements Movable {
         this.xpos = 0;
         this.ypos = 0;
         this.dir = 0;
-        this.currentSpeed =  0;*/
+        this.currentSpeed = 0;
+    }
 
 
 
@@ -34,7 +35,7 @@ public abstract class Cars implements Movable {
         this.modelName = name;
     }
     public int getNrDoors() {
-        return nrDoors;
+        return this.nrDoors;
     }
 
     public void setNrDoors(int doors){

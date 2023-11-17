@@ -4,11 +4,7 @@ public class Volvo240 extends PersCar{
 
     private final static double trimFactor = 1.25;
     public Volvo240() {
-        setNrDoors(4);
-        setEnginePower(100);
-        setCarWeight(1243);
-        setColor(Color.black);
-        setModelName("Volvo240");
+        super(4, 100, 1243, Color.black, "Volvo240");
         stopEngine();
     }
 

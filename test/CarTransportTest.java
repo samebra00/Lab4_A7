@@ -2,10 +2,12 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.*;
+
 public class CarTransportTest extends TestCase {
     private  CarTransport CarTransport;
     @Before
-    public void init(){CarTransport = new CarTransport(8);}
+    public void init(){CarTransport = new CarTransport();}
     @Test
     public void testRaiseAngle() {
         assert CarTransport.getRampState() == 0;
@@ -79,8 +81,7 @@ public class CarTransportTest extends TestCase {
             Saab95 saab = new Saab95();
             CarTransport.Load(volvo);
             CarTransport.Load(saab);
-            assert CarTransport.
+
         }
     }
-    }
-}
+

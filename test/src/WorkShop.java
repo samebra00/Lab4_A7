@@ -1,13 +1,15 @@
 
 import java.security.DrbgParameters;
 import java.util.ArrayList;
-
-public class WorkShop<T> {
+// T extends cars betyder att Typargumentet Saab95 eller Volvo240 kommer ärva metoder från cars.
+//även om dom typerna per automatik ärver från Cars måste detta deklareras i denna kod för att
+// input av typ T i outTake ska ha tillgång till Cars metoder.
+public class WorkShop<T extends Cars> {
 
     private int Cap;
     private double loadposx = 0;
 
-    private ArrayList<T> Stallet;
+    private ArrayList<T> Stallet = new ArrayList<>(0);
 
     public WorkShop(int Cap) {
         this.Cap = Cap;
@@ -18,16 +20,18 @@ public class WorkShop<T> {
         if (Stallet.size() < this.Cap) {
             Stallet.add(car);
         }
-
+        else{
+        System.out.println("Workshop full, try the one down the street");}
     }
 
-    public Cars outTake(Cars car) {
-         double loadposx = 0;
+
+    public T outTake(T car) {
         Stallet.remove(car);
         car.setXpos(loadposx);
-        loadposx += 1;
+        loadposx ++;
         return car;
         }
 
+    public ArrayList<T> curCars(){return Stallet;}
 
     }
