@@ -17,7 +17,7 @@ public class CarTransport extends TRUCK{
 
     }
     // MAssa IF statements som kollar att bilen är nog nära Trucken i både X pos och Y pos.
-    //Vi kollar även att bilen inte redans finns på listen och att maxload inte är uppnådd.
+    //Vi kollar även att bilen inte redans finns på listen och att maxload inte är uppnådd.DSADASD
    public void Load(PersCar car) {
          if (getRampState() == 0 && Math.abs(car.getXPos()) - Math.abs(this.getXPos()) < loadingfield
           && Math.abs(this.getYPos()) - Math.abs(car.getYPos()) < loadingfield && !curLoad.contains((car))) {
