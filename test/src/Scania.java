@@ -2,45 +2,24 @@ import java.awt.*;
 
 public class Scania extends TRUCK {
 
-    private double TrailerAngle;
 
     private double WeightFactor;
 
     public Scania(){
-        setNrDoors(2);
-        setEnginePower(1000);
-        setCarWeight(3000);
-        setColor(Color.blue);
-        setModelName("Scania");
-        this.TrailerAngle = 0;
-        this.WeightFactor = 0.3;
+        super(2, 100, 3000, Color.blue, "Scania ", 1);
+
     }
-
-    @Override
-    public void startEngine(){
-        if (TrailerAngle == 0){
-            setCurrentSpeed(0.1);
-        }
-    }
-
-
 
     public void RaiseAngle(double amount){
-        if ((TrailerAngle + amount) <= 70 && TrailerAngle + amount >= 0 && getCurrentSpeed() ==0){
-        TrailerAngle += amount;}
+        if ((RampState + amount) <= 70 && RampState + amount >= 0 && getCurrentSpeed() ==0){
+        RampState += amount;}
     }
 
     public void LowerAngle(double amount){
-        if ((TrailerAngle - amount) > 0 && TrailerAngle - amount >= 70 && getCurrentSpeed() ==0){
-        TrailerAngle -= amount;}
+        if ((RampState - amount) > 0 && RampState - amount >= 70 && getCurrentSpeed() ==0){
+        RampState -= amount;}
     }
 
-    public double getTrailerAngle(){
-        return TrailerAngle;
-    }
 
-    @Override
-    protected double speedFactor() {
-        return getEnginePower() * 0.1 * WeightFactor;
-    }
+
 }

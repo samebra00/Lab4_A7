@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public abstract class TRUCK extends Cars {
     private double WeightFactor = 0.2;
 
-    private double RampState = 0;
+    public double RampState = 0;
     private int LoadMax;
 
     private ArrayList<PersCar> curLoad;
@@ -16,9 +16,18 @@ public abstract class TRUCK extends Cars {
         this.LoadMax = LoadMax;
         this.curLoad = new ArrayList<PersCar>();
     }
-    protected double speedFactor() {
+    @Override
+    public double speedFactor() {
         return getEnginePower() * 0.1 * WeightFactor;
 }
+
+
+    @Override
+    public void startEngine(){
+        if (RampState == 0){
+            setCurrentSpeed(0.1);
+        }
+    }
 
 
     public void RaiseAngle(){
