@@ -34,6 +34,8 @@ public abstract class Cars implements Movable {
     public void setModelName(String name){
         this.modelName = name;
     }
+
+    public String getModelName(){return this.modelName;}
     public int getNrDoors() {
         return this.nrDoors;
     }

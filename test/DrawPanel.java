@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
+import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -10,18 +12,18 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
+    HashMap<Cars, BufferedImage> images = new HashMap<>();
     // To keep track of a singel cars position
-    Point volvoPoint = new Point();
+    HashMap<Cars, Point> carPoints = new HashMap<>();
 
     // TODO: Make this genereal for all cars
-    void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
+    void moveit(int x, int y, Cars car){
+        Point newPos = new Point(x,y);
+        carPoints.replace(car, newPos);
     }
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, Collection<Cars> cars) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
@@ -33,7 +35,9 @@ public class DrawPanel extends JPanel{
 
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+            for(Cars bil: cars){
+                images.put(bil, ImageIO.read(DrawPanel.class.getResourceAsStream("pics/"+bil.getModelName()+".jpg")));
+            }
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -46,6 +50,7 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        for (Cars bil: images.keySet())
+        g.drawImage(images.get(bil), carPoints.get(bil).x, carPoints.get(bil).y, null); // see javadoc for more info on the parameters
     }
 }
