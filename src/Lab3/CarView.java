@@ -74,16 +74,7 @@ public class CarView extends JFrame{
             }
         });
 
-        turboOnButton.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                for (Cars bil: carC.cars){
-                   int bil_idx = carC.cars.indexOf(bil);
-                   Cars cur_bil = carC.cars.get(bil_idx);
 
-                }
-            }
-        });
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
