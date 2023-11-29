@@ -74,16 +74,7 @@ public class CarView extends JFrame{
             }
         });
 
-        turboOnButton.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                for (Cars bil: carC.cars){
-                   int bil_idx = carC.cars.indexOf(bil);
-                   Cars cur_bil = carC.cars.get(bil_idx);
 
-                }
-            }
-        });
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
@@ -142,6 +133,23 @@ public class CarView extends JFrame{
 
             }
         });
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.SaabTurboOn();
+
+
+            }
+        });
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.SaabTurboOff();
+            }
+        });
+
+
+
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
