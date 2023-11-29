@@ -1,7 +1,13 @@
+package Lab3;
+
+import lab1.*;
+import lab2.*;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -21,7 +27,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Cars> cars = new ArrayList<>();
+   ArrayList<Cars> cars = new ArrayList<>();
 
     //methods:
 
@@ -49,6 +55,14 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getXPos());
                 int y = (int) Math.round(car.getYPos());
+                if (y <0 ){
+                    car.turnRight();
+                    car.turnRight();
+                }
+                if (y > 500 ){
+                    car.turnLeft();
+                    car.turnLeft();
+                }
                 frame.drawPanel.moveit(x, y,car);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -82,6 +96,5 @@ public class CarController {
         }
     }
 
-
-            }
+}
 

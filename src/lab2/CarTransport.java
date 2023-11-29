@@ -1,6 +1,10 @@
+package lab2;
+
+import lab1.PersCar;
+
 import java.awt.*;
 import java.util.ArrayList;
-// Extendar TRUCK bara för att markera att en Car Transport inte är en Personal Car
+// Extendar lab2.TRUCK bara för att markera att en Car Transport inte är en Personal Car
 public class CarTransport extends TRUCK{
 
     private int LoadMAX;

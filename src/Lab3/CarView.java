@@ -1,9 +1,12 @@
+package Lab3;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import lab1.*;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -68,6 +71,17 @@ public class CarView extends JFrame{
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+            }
+        });
+
+        turboOnButton.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                for (Cars bil: carC.cars){
+                   int bil_idx = carC.cars.indexOf(bil);
+                   Cars cur_bil = carC.cars.get(bil_idx);
+
+                }
             }
         });
 

@@ -1,5 +1,8 @@
+package lab2;
 
-import java.security.DrbgParameters;
+import lab1.Cars;
+import lab1.PersCar;
+
 import java.util.ArrayList;
 // T extends cars betyder att Typargumentet Saab95 eller Volvo240 kommer ärva metoder från cars.
 //även om dom typerna per automatik ärver från Cars måste detta deklareras i denna kod för att

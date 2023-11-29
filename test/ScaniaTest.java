@@ -1,6 +1,6 @@
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import lab2.*;
 
 public class ScaniaTest{
     private Scania Scania;

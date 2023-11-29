@@ -1,6 +1,8 @@
+package lab1;
+
 import java.awt.*;
 
-public class Volvo240 extends PersCar{
+public class Volvo240 extends PersCar {
 
     private final static double trimFactor = 1.25;
     public Volvo240() {
@@ -8,7 +10,7 @@ public class Volvo240 extends PersCar{
         stopEngine();
     }
 
-    protected double speedFactor(){ return getEnginePower() * 0.01 * trimFactor;}
+    public double speedFactor(){ return getEnginePower() * 0.01 * trimFactor;}
 
 
 

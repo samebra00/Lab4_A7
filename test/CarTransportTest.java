@@ -1,8 +1,9 @@
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+import lab1.*;
+import lab2.*;
 
-import java.awt.*;
 
 public class CarTransportTest extends TestCase {
     private  CarTransport CarTransport;

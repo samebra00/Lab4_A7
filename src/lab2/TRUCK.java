@@ -1,8 +1,12 @@
+package lab2;
+
+import lab1.*;
+
 import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class TRUCK extends Cars {
-    private double WeightFactor = 0.2;
+    private double WeightFactor = 0.05;
 
     public double RampState = 0;
     private int LoadMax;

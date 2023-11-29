@@ -1,3 +1,5 @@
+package lab1;
+
 import java.awt.*;
 
 public class Saab95 extends PersCar {
@@ -17,7 +19,7 @@ public class Saab95 extends PersCar {
     }
 
     @Override
-    protected double speedFactor(){
+    public double speedFactor(){
         double turbo = 1.0;
         if (turboOn) turbo = 1.3;
         return getEnginePower() * 0.01 * turbo;

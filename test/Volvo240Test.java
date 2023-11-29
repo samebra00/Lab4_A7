@@ -1,4 +1,4 @@
-import junit.framework.TestCase;
+import lab1.Volvo240;
 import org.junit.Before;
 import org.junit.Test;
 

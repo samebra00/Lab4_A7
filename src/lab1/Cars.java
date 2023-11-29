@@ -1,3 +1,5 @@
+package lab1;
+
 import java.awt.*;
 
 
@@ -149,7 +151,7 @@ public abstract class Cars implements Movable {
 
     // TODO fix this method according to lab pm
     public void gas(double amount) {
-        if(0 <= amount && amount <=1){
+        if(0 <= amount && amount <=1 && currentSpeed >= 0.1){
         incrementSpeed(amount);}
         }
 

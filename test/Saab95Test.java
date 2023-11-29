@@ -1,8 +1,9 @@
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 import java.awt.*;
-import java.util.ArrayList;
+import lab1.*;
+import lab2.*;
+
 import static org.junit.Assert.assertEquals;
 public class Saab95Test{
 
