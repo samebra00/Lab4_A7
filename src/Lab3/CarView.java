@@ -142,6 +142,7 @@ public class CarView extends JFrame{
 
             }
         });
+
         // Make the frame pack all it's components by respecting the sizes if possible.
         this.pack();
 
