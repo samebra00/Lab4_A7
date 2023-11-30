@@ -12,6 +12,7 @@ public class Scania extends TRUCK {
     public Scania(){
         super(2, 100, 3000, Color.blue, "Scania", 1);
 
+
     }
 
     public void RaiseAngle(double amount){
@@ -20,7 +21,7 @@ public class Scania extends TRUCK {
     }
 
     public void LowerAngle(double amount){
-        if ((RampState - amount) > 0 && RampState - amount >= 70 && getCurrentSpeed() ==0){
+        if ((RampState - amount) >= 0 && RampState - amount <= 70 && getCurrentSpeed() ==0){
         RampState -= amount;}
     }
 

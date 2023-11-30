@@ -111,7 +111,19 @@ public class CarController {
             }
         }
     }
-
-
+    void ScaniaBedUp(){
+        for (Cars bil : cars){
+            if (bil instanceof Scania){
+                ((Scania) bil).RaiseAngle(70);
+            }
+        }
+    }
+    void ScaniaBedDown(){
+        for (Cars bil : cars){
+            if (bil instanceof Scania){
+                ((Scania) bil).LowerAngle(70);
+            }
+        }
+    }
 }
 

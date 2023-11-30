@@ -2,7 +2,9 @@ package Lab3;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
@@ -19,7 +21,9 @@ public class DrawPanel extends JPanel{
     // To keep track of a singel cars position
     HashMap<Cars, Point> carPoints = new HashMap<>();
 
-    BufferedImage scaniaImage;
+    BufferedImage backgroundImage;
+
+
     // TODO: Make this genereal for all cars
     void moveit(int x, int y, Cars car){
         Point newPos = new Point(x,y);
@@ -55,6 +59,7 @@ public class DrawPanel extends JPanel{
            /* volvoImage = ImageIO.read(Lab3.DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             saabImage = ImageIO.read(Lab3.DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             scaniaImage = ImageIO.read(Lab3.DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));*/
+
             for(Cars bil : cars){
                 images.put(bil, ImageIO.read(DrawPanel.class.getResourceAsStream("pics/" +bil.getModelName()+".jpg")));
             }
@@ -70,6 +75,7 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         for (Cars bil : images.keySet()) {
             g.drawImage(images.get(bil), carPoints.get(bil).x, carPoints.get(bil).y, null); // see javadoc for more info on the parameters
         }

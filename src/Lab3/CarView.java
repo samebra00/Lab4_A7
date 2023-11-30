@@ -147,7 +147,19 @@ public class CarView extends JFrame{
                 carC.SaabTurboOff();
             }
         });
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.ScaniaBedUp();
+            }
+        });
 
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.ScaniaBedDown();
+            }
+        });
 
 
 
