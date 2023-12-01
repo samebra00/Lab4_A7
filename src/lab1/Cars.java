@@ -13,7 +13,7 @@ public abstract class Cars implements Movable {
     private String modelName;
     private double xpos = 0, ypos = 0;
 
-    private double carWeight;
+
 
 
 
@@ -33,26 +33,18 @@ public abstract class Cars implements Movable {
 
 
 
-    public void setModelName(String name){
-        this.modelName = name;
-    }
-
     public String getModelName(){return this.modelName;}
     public int getNrDoors() {
         return this.nrDoors;
     }
 
-    public void setNrDoors(int doors){
-        this.nrDoors = doors;
-    }
+
 
     public double getEnginePower() {
         return enginePower;
     }
 
-    public void setEnginePower(double power){
-        this.enginePower = power;
-    }
+
 
 
     public double getCurrentSpeed() {
@@ -85,12 +77,7 @@ public abstract class Cars implements Movable {
     public int getDir() {
         return dir;
     }
-    public double getCarWeight(){
-        return carWeight;
-    }
-    public void setCarWeight(double weight){
-        this.carWeight = weight;
-    }
+
     protected abstract double speedFactor();
 
 

@@ -7,7 +7,7 @@ import lab2.*;
 public class Scania extends TRUCK {
 
 
-    private double WeightFactor;
+
 
     public Scania(){
         super(2, 100, 3000, Color.blue, "Scania", 1);
