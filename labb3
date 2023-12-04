@@ -1,0 +1,23 @@
+Kod: https://github.com/jakobgg1/lab3____A7
+
+
+Refaktoriseringsplan A7
+Vi skapar en ny klass som heter car factory som sedan kopplas till applikationer. På så tar vi bort beroendet mellan CarController och alla bilmodeller.
+På så sätt så minskar vi beroendet mellan modellen och Controller modulen
+Vi flyttar main funktionen från Car Controller till en klass som heter applikation i enlighet med MVC.
+På detta sätt tar vi bort ett av beroendena mellan carview och car controller. 
+Efter vi gjort detta kommer även all kod som vi vill exekvera finnas i en separat modul medans användar input finns separat i controller.
+Detta följer då SRP eftersom våran modul carController då inte tar på sig ett större jobb än vad den bör.
+Implementation av ett observer pattern för att minska beroendet mellan view och modellen. 
+Med observern tar vi även bor beroendet mellan car controller och modellen. 
+Detta eftersom våran observer då kommer kunna användas för att notifiera carView när förändring har skett så att CarView då kan uppdateras på rätt sätt.
+
+
+
+Dessa steg kommer tillsammans göra vår kodbas mer i enlighet med MVC(A) men även SoC och SRP. Vi tror att de stegen vi implementerar kommer göra vår kod mer lättarbetad och mycket av våra ändringar kommer kunna ske parallellt vilket är ett av målen med dessa modeller. Däremot kommer vi behöva börja med att flytta mainfunktionen samt car factory innan vi börjar arbeta parallellt.
+Uppgift 2 länk:
+https://lucid.app/lucidchart/84bcb4db-3a35-4aea-9387-06d8b05d810c/edit?page=0_0&invitationId=inv_9e019fcc-a141-44f2-bee6-b6828e26f556#
+
+Uppgift 4 länk:
+https://lucid.app/lucidchart/c7d633eb-625f-444c-932d-caa476a0507a/edit?viewport_loc=-2493%2C-901%2C4126%2C1944%2C0_0&invitationId=inv_b4a8d929-bd94-4c61-aa7d-f62961397021
+
