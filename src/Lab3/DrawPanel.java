@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
@@ -13,7 +14,8 @@ import lab1.*;
 
 // This panel represent the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel implements Subject{
+
 
     // Just a single image, TODO: Generalize
     HashMap<Cars, BufferedImage> images = new HashMap<>();
@@ -21,7 +23,7 @@ public class DrawPanel extends JPanel{
     // To keep track of a singel cars position
     HashMap<Cars, Point> carPoints = new HashMap<>();
 
-    BufferedImage backgroundImage;
+
 
 
     // TODO: Make this genereal for all cars
@@ -67,7 +69,7 @@ public class DrawPanel extends JPanel{
         {System.out.println("Ingen fil med det namnet hittades");
             //ex.printStackTrace();
         }
-
+s
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
@@ -79,5 +81,23 @@ public class DrawPanel extends JPanel{
         for (Cars bil : images.keySet()) {
             g.drawImage(images.get(bil), carPoints.get(bil).x, carPoints.get(bil).y, null); // see javadoc for more info on the parameters
         }
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+
+
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.add(observer);
+
+    }
+
+    @Override
+    public void notifyObservers() {
+
     }
 }
