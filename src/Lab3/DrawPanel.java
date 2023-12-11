@@ -16,14 +16,14 @@ import lab1.*;
 
 public class DrawPanel extends JPanel implements Subject{
 
-
+    Application app;
     // Just a single image, TODO: Generalize
     HashMap<Cars, BufferedImage> images = new HashMap<>();
 
     // To keep track of a singel cars position
     HashMap<Cars, Point> carPoints = new HashMap<>();
 
-
+    ArrayList<Observer> observers = new ArrayList<>();
 
 
     // TODO: Make this genereal for all cars
@@ -69,7 +69,7 @@ public class DrawPanel extends JPanel implements Subject{
         {System.out.println("Ingen fil med det namnet hittades");
             //ex.printStackTrace();
         }
-s
+
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself

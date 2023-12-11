@@ -16,18 +16,21 @@ import java.util.ArrayList;
 
 public class Application {
 
-
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
+        ModelTranslator MT = new ModelTranslator();
 
 
-        cc.cars.add(CarFactory.createVolvo240());
-        cc.cars.add(CarFactory.createSaab95());
-        cc.cars.add(CarFactory.createScania());
+
+        MT.cars.add(CarFactory.createVolvo240());
+        MT.cars.add(CarFactory.createSaab95());
+        MT.cars.add(CarFactory.createScania());
 
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
+        cc.CW = new CarView("CarSim1.0", MT);
+        cc.MT = MT;
+        cc.initButtons();
 
         // Start the timer
         cc.timer.start();

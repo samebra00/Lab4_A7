@@ -3,7 +3,8 @@ package Lab3;
 import lab1.Cars;
 import lab1.Saab95;
 import lab2.Scania;
-
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,17 +15,21 @@ public class CarController {
 
     private static final int delay = 50;
 
-    ViewObserver observer = new ViewObserver();
-    CarView frame;
-    // A list of cars, modify if needed
-    ArrayList<Cars> cars = new ArrayList<>();
+     Timer timer = new Timer(delay, new TimerListener());
 
-    public Timer timer = new Timer(delay, new TimerListener());
+     CarView CW;
+
+     ModelTranslator MT;
+
+
+
+
+
 
 
     public class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Cars car : cars) {
+            for (Cars car : MT.cars) {
                 car.move();
                 int x = (int) Math.round(car.getXPos());
                 int y = (int) Math.round(car.getYPos());
@@ -36,65 +41,75 @@ public class CarController {
                     car.turnLeft();
                     car.turnLeft();
                 }
+               CW.drawPanel.moveit(x, y , car);
+                CW.drawPanel.repaint();
                 // repaint() calls the paintComponent method of the panel
-                observer.update();
             }
         }
     }
 
+    public void initButtons(){
 
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
-        for (Cars car : cars){
-            car.gas(gas);
-        }
-    }
-    void brake(double amount){
-        double brake = amount/100;
-        for(Cars car : cars){
-            car.brake(brake);
-        }
-
-    }
-
-    void startAllCars(){
-        for (Cars car: cars){
-            car.startEngine();
-        }
-    }
-    void stopAllCars(){
-        for (Cars car : cars){
-            car.stopEngine();
-        }
-    }
-    void SaabTurboOn(){
-        for (Cars bil : cars){
-            if (bil instanceof Saab95){
-                ((Saab95) bil).setTurboOn();
-
+        CW.gasSpinner.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                CW.gasAmount = (int) ((JSpinner)e.getSource()).getValue();
             }
-        }
-    }
-    void SaabTurboOff(){
-        for (Cars bil : cars){
-            if (bil instanceof Saab95){
-                ((Saab95) bil).setTurboOff();
+        });
 
+
+        CW.gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.gas(CW.gasAmount);
             }
-        }
-    }
-    void ScaniaBedUp(){
-        for (Cars bil : cars){
-            if (bil instanceof Scania){
-                ((Scania) bil).RaiseAngle(70);
+
+
+        });
+
+        CW.brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.brake(CW.gasAmount);
             }
-        }
-    }
-    void ScaniaBedDown(){
-        for (Cars bil : cars){
-            if (bil instanceof Scania){
-                ((Scania) bil).LowerAngle(70);
+        });
+        CW.startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.startAllCars();
             }
-        }
+        });
+
+        CW.stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.stopAllCars();
+            }
+        });
+        CW.lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.ScaniaBedDown();
+            }
+        });
+        CW.liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.ScaniaBedUp();
+            }
+        });
+        CW.turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.SaabTurboOn();
+            }
+        });
+
+        CW.turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.SaabTurboOff();
+            }
+        });
     }
 }

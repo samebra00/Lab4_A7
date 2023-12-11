@@ -3,21 +3,26 @@ package Lab3;
 import lab1.Cars;
 
 import java.util.ArrayList;
+
 import java.util.Collection;
 
 public class ViewObserver implements Observer {
 
-    DrawPanel frame;
+    CarView CW;
 
-   ArrayList<Cars> cars = new ArrayList<>();
+    ModelTranslator MT;
+
+    //CarController cc;
+
 
     @Override
-    public  void update() {
-        for (Cars car : cars) {
+    public void update() {
+        for (Cars car : MT.cars) {
             int x = (int) Math.round(car.getXPos());
             int y = (int) Math.round(car.getYPos());
-            frame.moveit(x, y, car);
-            frame.repaint();
+            CW.drawPanel.moveit(x, y, car);
+            CW.drawPanel.repaint();
+
 
 
         }
