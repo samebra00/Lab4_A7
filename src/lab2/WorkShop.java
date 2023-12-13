@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class WorkShop<T extends Cars> {
 
     private int Cap;
-    private double loadposx = 0;
+    private int loadposx = 0;
 
     private ArrayList<T> Stallet = new ArrayList<>(0);
 

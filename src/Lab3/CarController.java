@@ -1,51 +1,24 @@
 package Lab3;
 
-import lab1.Cars;
-import lab1.Saab95;
-import lab2.Scania;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
+import java.util.Random;
 public class CarController {
+    Random rd = new Random();
 
 
-    private static final int delay = 50;
+     private CarView CW;
 
-     Timer timer = new Timer(delay, new TimerListener());
-
-     CarView CW;
-
-     ModelTranslator MT;
+     private ModelTranslator MT;
 
 
-
-
-
-
-
-    public class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Cars car : MT.cars) {
-                car.move();
-                int x = (int) Math.round(car.getXPos());
-                int y = (int) Math.round(car.getYPos());
-                if (y <0 ){
-                    car.turnRight();
-                    car.turnRight();
-                }
-                if (y > 500 ){
-                    car.turnLeft();
-                    car.turnLeft();
-                }
-               CW.drawPanel.moveit(x, y , car);
-                CW.drawPanel.repaint();
-                // repaint() calls the paintComponent method of the panel
-            }
-        }
+    public CarController(CarView CW, ModelTranslator MT){
+        this.MT = MT;
+        this.CW = CW;
+        initButtons();
     }
 
     public void initButtons(){
@@ -57,11 +30,40 @@ public class CarController {
             }
         });
 
+        CW.addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(MT.cars.size() < 10){
+                    int rand_int = rd.nextInt(3);
+
+                    if (rand_int ==1){
+                        MT.addSaab95();
+                    }
+                    else if (rand_int == 2){
+                        MT.addVolvo240();
+                    }
+                    else{
+                        MT.addScania();
+                }}
+                CW.drawPanel.updatePICS(MT.cars);
+            }
+        });
+
+        CW.removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    MT.removeCar();
+                    CW.drawPanel.updatePICS(MT.cars);}
+
+        });
+
+
 
         CW.gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MT.gas(CW.gasAmount);
+                System.out.println("NICE");
             }
 
 
@@ -77,6 +79,7 @@ public class CarController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MT.startAllCars();
+                System.out.println("HEJSAN");
             }
         });
 

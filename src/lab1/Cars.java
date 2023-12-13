@@ -89,29 +89,40 @@ public abstract class Cars implements Movable {
     public void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
-    public double getXPos(){return xpos;}
+    public double getXPos(){
+        return xpos;
+    }
 
     public void setXpos(double pos){
         this.xpos = pos;
     }
 
-    public double getYPos(){return ypos;}
+    public double getYPos(){
+        return ypos;}
+
+
 
     public void setYpos(double pos){ this.ypos = pos;}
+
+    public Point getPos(){
+        int xpos = (int) this.xpos;
+        int ypos = (int) this.ypos;
+        return new Point(xpos, ypos);
+    }
 
     public void move() {
         switch (getDir()) {
             case 0:
-                ypos = getYPos() + getCurrentSpeed();
+                ypos = ypos + getCurrentSpeed();
                 break;
             case 1:
-                xpos = getXPos() + getCurrentSpeed();
+                xpos = xpos + getCurrentSpeed();
                 break;
             case 2:
-                ypos = getYPos() - getCurrentSpeed();
+                ypos = ypos - getCurrentSpeed();
                 break;
             case 3:
-                xpos = getXPos() - getCurrentSpeed();
+                xpos = xpos - getCurrentSpeed();
                 break;
 
 

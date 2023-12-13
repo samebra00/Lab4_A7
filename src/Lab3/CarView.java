@@ -6,6 +6,10 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Random;
+
 import lab1.*;
 
 /**
@@ -21,13 +25,12 @@ public class CarView extends JFrame{
     private static final int Y = 800;
 
     // The controller member
-    CarController carC;
 
-/*    ViewObserver obs;*/
+    Random rd = new Random();
+
     ModelTranslator MT;
     DrawPanel drawPanel;
 
-    Application app;
 
     JPanel controlPanel = new JPanel();
 
@@ -45,6 +48,10 @@ public class CarView extends JFrame{
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
+
+    JButton addCarButton = new JButton("Add car");
+
+    JButton removeCarButton = new JButton("Remove Car");
 
     // Constructor
     public CarView(String framename,  ModelTranslator mt) {
@@ -91,6 +98,8 @@ public class CarView extends JFrame{
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
+        controlPanel.add(addCarButton, 6);
+        controlPanel.add(removeCarButton, 7);
         controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
@@ -119,4 +128,111 @@ public class CarView extends JFrame{
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    public void initGasButton(){
+        gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.gas(gasAmount);
+            }
+        });
+    }
+    public void initBrakeButton(){
+        brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.brake(gasAmount);
+            }
+        });
+    }
+
+    public void initStartButton(){
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.startAllCars();
+            }
+        });
+
+    }
+
+    public void initStopButton(){
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.stopAllCars();
+            }
+        });
+
+    }
+
+    public void initAddCarButton(){
+        addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(MT.cars.size() < 10){
+                    int rand_int = rd.nextInt(3);
+
+                    if (rand_int ==1){
+                        MT.addSaab95();
+                    }
+                    else if (rand_int == 2){
+                        MT.addVolvo240();
+                    }
+                    else{
+                        MT.addScania();
+                    }}
+                drawPanel.updatePICS(MT.cars);
+            }
+        });
+    }
+
+    public void initRemoveCarButton(){
+        removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.removeCar();
+                drawPanel.updatePICS(MT.cars);}
+
+        });
+    }
+    public void initTurboOnButton(){
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.SaabTurboOn();
+            }
+        });
+    }
+
+    public void initTurboOFFbutton(){
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.SaabTurboOff();
+            }
+        });
+    }
+    public void initLiftBedButton(){
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.ScaniaBedUp();
+            }
+        });
+    }
+    public void initLowerBedButton(){
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MT.ScaniaBedDown();
+            }
+        });
+
+    }
 }
+
+
+
+
+
