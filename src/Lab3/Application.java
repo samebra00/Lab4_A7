@@ -28,8 +28,6 @@ public class Application {
     public static void main(String[] args) {
         Application app = new Application();
         app.initApp();
-        int x = (int) 0.1;
-        System.out.print(x);
     }
 
     public void initApp(){

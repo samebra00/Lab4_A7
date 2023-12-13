@@ -10,12 +10,6 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class ModelTranslator{
-
-
-    HashMap<Cars, Point> carPoints = new HashMap<>();
-
-    ArrayList<Observer> observers = new ArrayList<>();
-
     ArrayList<Cars> cars;
 
     Random rd = new Random();
@@ -26,9 +20,9 @@ public class ModelTranslator{
 
 
     void initCars(){
-        this.cars.add(CarFactory.createVolvo240());
-        this.cars.add(CarFactory.createSaab95());
-        this.cars.add(CarFactory.createScania());
+        addVolvo240();
+        addScania();
+        addSaab95();
     }
 
 
@@ -54,11 +48,25 @@ public class ModelTranslator{
     }
 
 
+    void addRandomCar(){
+        if(cars.size() < 10){
+            int rand_int = rd.nextInt(3);
+
+            if (rand_int ==1){
+                addSaab95();
+            }
+            else if (rand_int == 2){
+                addVolvo240();
+            }
+            else{
+                addScania();
+            }}
+    }
+
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Cars car : this.cars){
             car.gas(gas);
-            System.out.println("GAAS");
         }
     }
     void brake(double amount){
@@ -74,7 +82,6 @@ public class ModelTranslator{
         for (Cars car: this.cars){
             if(car.getCurrentSpeed() == 0){
             car.startEngine();
-            System.out.println("BLASASDASAS");
         }
     }}
     void stopAllCars(){

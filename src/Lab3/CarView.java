@@ -21,7 +21,7 @@ import lab1.*;
  **/
 
 public class CarView extends JFrame{
-    private static final int X = 800;
+    private static final int X = 1000;
     private static final int Y = 800;
 
     // The controller member
@@ -129,107 +129,7 @@ public class CarView extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void initGasButton(){
-        gasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.gas(gasAmount);
-            }
-        });
-    }
-    public void initBrakeButton(){
-        brakeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.brake(gasAmount);
-            }
-        });
-    }
 
-    public void initStartButton(){
-        startButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.startAllCars();
-            }
-        });
-
-    }
-
-    public void initStopButton(){
-        stopButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.stopAllCars();
-            }
-        });
-
-    }
-
-    public void initAddCarButton(){
-        addCarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(MT.cars.size() < 10){
-                    int rand_int = rd.nextInt(3);
-
-                    if (rand_int ==1){
-                        MT.addSaab95();
-                    }
-                    else if (rand_int == 2){
-                        MT.addVolvo240();
-                    }
-                    else{
-                        MT.addScania();
-                    }}
-                drawPanel.updatePICS(MT.cars);
-            }
-        });
-    }
-
-    public void initRemoveCarButton(){
-        removeCarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.removeCar();
-                drawPanel.updatePICS(MT.cars);}
-
-        });
-    }
-    public void initTurboOnButton(){
-        turboOnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.SaabTurboOn();
-            }
-        });
-    }
-
-    public void initTurboOFFbutton(){
-        turboOffButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.SaabTurboOff();
-            }
-        });
-    }
-    public void initLiftBedButton(){
-        liftBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.ScaniaBedUp();
-            }
-        });
-    }
-    public void initLowerBedButton(){
-        lowerBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MT.ScaniaBedDown();
-            }
-        });
-
-    }
 }
 
 

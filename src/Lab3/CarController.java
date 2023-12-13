@@ -33,18 +33,7 @@ public class CarController {
         CW.addCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(MT.cars.size() < 10){
-                    int rand_int = rd.nextInt(3);
-
-                    if (rand_int ==1){
-                        MT.addSaab95();
-                    }
-                    else if (rand_int == 2){
-                        MT.addVolvo240();
-                    }
-                    else{
-                        MT.addScania();
-                }}
+                MT.addRandomCar();
                 CW.drawPanel.updatePICS(MT.cars);
             }
         });
@@ -63,7 +52,6 @@ public class CarController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MT.gas(CW.gasAmount);
-                System.out.println("NICE");
             }
 
 
@@ -79,7 +67,6 @@ public class CarController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MT.startAllCars();
-                System.out.println("HEJSAN");
             }
         });
 
@@ -115,4 +102,6 @@ public class CarController {
             }
         });
     }
+
+
 }

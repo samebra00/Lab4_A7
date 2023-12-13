@@ -14,14 +14,14 @@ import lab1.*;
 
 public class DrawPanel extends JPanel{
 
-    Application app;
+
     // Just a single image, TODO: Generalize
     HashMap<Cars, BufferedImage> images = new HashMap<>();
 
     // To keep track of a singel cars position
-    ArrayList<Cars> cars = new ArrayList<>();
 
-    ArrayList<Observer> observers = new ArrayList<>();
+
+
 
 
     // TODO: Make this genereal for all cars
@@ -47,16 +47,8 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        createPoints(cars);
         // Print an error message in case file is not found with a try/catch block
-        try {
-            for(Cars bil : cars){
-                images.put(bil, ImageIO.read(DrawPanel.class.getResourceAsStream("pics/" +bil.getModelName()+".jpg")));
-            }
-        } catch (IOException ex)
-        {
-            ex.printStackTrace();
-        }
+        updatePICS(cars);
 
     }
 
